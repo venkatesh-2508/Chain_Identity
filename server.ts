@@ -1,5 +1,4 @@
 import express, { Request, Response, NextFunction } from 'express';
-import { createServer as createViteServer } from 'vite';
 import path from 'path';
 import fs from 'fs';
 import crypto from 'crypto';
@@ -8,15 +7,24 @@ import bcrypt from 'bcryptjs';
 
 const PORT = 3000;
 const JWT_SECRET = process.env.JWT_SECRET || 'chainidentity-sih2026-bel-secure-key-998877';
-const DATA_DIR = path.resolve(process.cwd(), 'data');
+
+// Detect serverless environment (e.g. Vercel, AWS Lambda) where process.cwd() is read-only
+const isServerless = Boolean(process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME);
+const BUNDLED_DATA_DIR = path.resolve(process.cwd(), 'data');
+const DATA_DIR = isServerless ? path.resolve('/tmp', 'chainidentity_data') : BUNDLED_DATA_DIR;
 const DB_FILE = path.join(DATA_DIR, 'chainidentity_db.json');
 const OFFCHAIN_DIR = path.join(DATA_DIR, 'offchain_storage');
 
-if (!fs.existsSync(DATA_DIR)) {
-  fs.mkdirSync(DATA_DIR, { recursive: true });
-}
-if (!fs.existsSync(OFFCHAIN_DIR)) {
-  fs.mkdirSync(OFFCHAIN_DIR, { recursive: true });
+try {
+  if (!fs.existsSync(DATA_DIR)) {
+    fs.mkdirSync(DATA_DIR, { recursive: true });
+  }
+  if (!fs.existsSync(OFFCHAIN_DIR)) {
+    fs.mkdirSync(OFFCHAIN_DIR, { recursive: true });
+  }
+} catch (e) {
+  // Read-only filesystem warning handled gracefully
+  console.warn('Notice: Storage directory creation skipped (read-only filesystem):', e);
 }
 
 // Interfaces
@@ -250,6 +258,25 @@ interface DBStore {
 let db: DBStore;
 
 function initDatabase() {
+  // If in serverless mode and DB_FILE in /tmp doesn't exist, seed from bundled database if available
+  if (isServerless && !fs.existsSync(DB_FILE)) {
+    const bundledDbPath = path.join(BUNDLED_DATA_DIR, 'chainidentity_db.json');
+    if (fs.existsSync(bundledDbPath)) {
+      try {
+        const bundledData = fs.readFileSync(bundledDbPath, 'utf8');
+        db = JSON.parse(bundledData);
+        if (db.ledger && db.ledger.length > 0) {
+          try {
+            fs.writeFileSync(DB_FILE, bundledData, 'utf8');
+          } catch (_) {}
+          return;
+        }
+      } catch (err) {
+        console.warn('Could not read bundled database:', err);
+      }
+    }
+  }
+
   if (fs.existsSync(DB_FILE)) {
     try {
       const data = fs.readFileSync(DB_FILE, 'utf8');
@@ -634,6 +661,25 @@ initDatabase();
 const app = express();
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
+
+// Serverless URL normalizer: ensure requests arriving with or without /api prefix reach the right route
+app.use((req, res, next) => {
+  if (req.url && !req.url.startsWith('/api') && req.url !== '/' && !req.url.startsWith('/assets') && !req.url.startsWith('/@') && !req.url.startsWith('/src')) {
+    req.url = '/api' + (req.url.startsWith('/') ? req.url : '/' + req.url);
+  }
+  next();
+});
+
+// Root API information endpoint
+app.get('/api', (_req: Request, res: Response) => {
+  res.json({
+    status: 'ONLINE',
+    service: 'ChainIdentity Enterprise Platform',
+    version: '2026.1.0-ENTERPRISE',
+    blockchainProvider: db?.blockchainProvider || 'fabric',
+    timestamp: new Date().toISOString()
+  });
+});
 
 // Middleware: Authenticate JWT
 function authenticateToken(req: Request, res: Response, next: NextFunction) {
@@ -2138,6 +2184,7 @@ async function startServer() {
   const isProd = process.env.NODE_ENV === 'production';
 
   if (!isProd) {
+    const { createServer: createViteServer } = await import('vite');
     const vite = await createViteServer({
       server: { middlewareMode: true },
       appType: 'spa',
@@ -2160,4 +2207,11 @@ async function startServer() {
   });
 }
 
-startServer();
+// In standard Node/Docker/dev environments, start the listener.
+// In Vercel serverless functions, Vercel invokes the exported app handler.
+if (!process.env.VERCEL && process.env.NODE_ENV !== 'test') {
+  startServer();
+}
+
+export default app;
+export { app };
