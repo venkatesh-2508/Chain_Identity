@@ -297,7 +297,6 @@ export const Sidebar: React.FC = () => {
         {renderNavLinks()}
       </div>
 
-
     </aside>
   );
 };
