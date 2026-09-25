@@ -1,0 +1,6 @@
+{
+  "name": "ChainIdentity",
+  "description": "Decentralized Trust, Identity, Access & Digital Asset Platform - Blockchain & Cybersecurity prototype for SIH 2026",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,488 @@
+{
+  "users": [
+    {
+      "id": "usr-admin-01",
+      "name": "System Administrator",
+      "email": "admin@chainidentity.demo",
+      "passwordHash": "$2b$10$9VTIWcLej1d2KL8ibMFGSeMURS2jRwD/xtyckANfbiYAri5HsWh4m",
+      "did": "did:chainidentity:admin001",
+      "role": "ADMINISTRATOR",
+      "organization": "Bharat Electronics Limited (BEL)",
+      "department": "Enterprise Security Architecture",
+      "status": "ACTIVE",
+      "createdAt": "2026-09-20T08:00:00Z"
+    },
+    {
+      "id": "usr-sec-01",
+      "name": "Vikram Joshi (SecOps)",
+      "email": "security@chainidentity.demo",
+      "passwordHash": "$2b$10$9VTIWcLej1d2KL8ibMFGSeOH1vgR6Y6fXN4tfkVt1nwFQio9A7B02",
+      "did": "did:chainidentity:sec001",
+      "role": "SECURITY_MANAGER",
+      "organization": "Bharat Electronics Limited (BEL)",
+      "department": "Cyber Security Operations Center (C-SOC)",
+      "status": "ACTIVE",
+      "createdAt": "2026-09-20T08:15:00Z"
+    },
+    {
+      "id": "usr-rahul-01",
+      "name": "Rahul Kumar",
+      "email": "rahul@chainidentity.demo",
+      "passwordHash": "$2b$10$9VTIWcLej1d2KL8ibMFGSe9.Cqzj/rjMEvNuqp.oyG2kJX8sJyMm6",
+      "did": "did:chainidentity:rahul123",
+      "role": "EMPLOYEE",
+      "organization": "Bharat Electronics Limited (BEL)",
+      "department": "Defense Radar & Tactical Systems",
+      "status": "ACTIVE",
+      "createdAt": "2026-09-20T08:30:00Z"
+    },
+    {
+      "id": "usr-auditor-01",
+      "name": "Dr. Ananya Roy",
+      "email": "auditor@chainidentity.demo",
+      "passwordHash": "$2b$10$9VTIWcLej1d2KL8ibMFGSe6NnTbtaI0oL7QuWGACDaoivFl3SIk8S",
+      "did": "did:chainidentity:aud001",
+      "role": "AUDITOR",
+      "organization": "Bharat Electronics Limited (BEL)",
+      "department": "Compliance, Standards & Blockchain Audit",
+      "status": "ACTIVE",
+      "createdAt": "2026-09-20T08:45:00Z"
+    }
+  ],
+  "dids": {
+    "did:chainidentity:admin001": {
+      "id": "did:chainidentity:admin001",
+      "controller": "did:chainidentity:bel-root-authority",
+      "verificationMethod": [
+        {
+          "id": "did:chainidentity:admin001#key-1",
+          "type": "Ed25519VerificationKey2020",
+          "controller": "did:chainidentity:admin001",
+          "publicKeyMultibase": "z7c1d3d3f79f30b37e1da68b79fbff2bf4f6d49e6de75"
+        }
+      ],
+      "authentication": [
+        "did:chainidentity:admin001#key-1"
+      ],
+      "service": [
+        {
+          "id": "did:chainidentity:admin001#chainidentity-agent",
+          "type": "ChainIdentityDecentralizedAgent",
+          "serviceEndpoint": "https://chainidentity.bel.in/did-resolver/v1"
+        }
+      ],
+      "created": "2026-09-20T08:00:00Z",
+      "updated": "2026-09-20T08:00:00Z"
+    },
+    "did:chainidentity:sec001": {
+      "id": "did:chainidentity:sec001",
+      "controller": "did:chainidentity:bel-root-authority",
+      "verificationMethod": [
+        {
+          "id": "did:chainidentity:sec001#key-1",
+          "type": "Ed25519VerificationKey2020",
+          "controller": "did:chainidentity:sec001",
+          "publicKeyMultibase": "z8e5ba7d49d56bcab702c59a80ebd663650cc9f8ba63e"
+        }
+      ],
+      "authentication": [
+        "did:chainidentity:sec001#key-1"
+      ],
+      "service": [
+        {
+          "id": "did:chainidentity:sec001#chainidentity-agent",
+          "type": "ChainIdentityDecentralizedAgent",
+          "serviceEndpoint": "https://chainidentity.bel.in/did-resolver/v1"
+        }
+      ],
+      "created": "2026-09-20T08:15:00Z",
+      "updated": "2026-09-20T08:15:00Z"
+    },
+    "did:chainidentity:rahul123": {
+      "id": "did:chainidentity:rahul123",
+      "controller": "did:chainidentity:bel-root-authority",
+      "verificationMethod": [
+        {
+          "id": "did:chainidentity:rahul123#key-1",
+          "type": "Ed25519VerificationKey2020",
+          "controller": "did:chainidentity:rahul123",
+          "publicKeyMultibase": "zc9ab57c539bd421b35b568c81c738a66be19ed705a18"
+        }
+      ],
+      "authentication": [
+        "did:chainidentity:rahul123#key-1"
+      ],
+      "service": [
+        {
+          "id": "did:chainidentity:rahul123#chainidentity-agent",
+          "type": "ChainIdentityDecentralizedAgent",
+          "serviceEndpoint": "https://chainidentity.bel.in/did-resolver/v1"
+        }
+      ],
+      "created": "2026-09-20T08:30:00Z",
+      "updated": "2026-09-20T08:30:00Z"
+    },
+    "did:chainidentity:aud001": {
+      "id": "did:chainidentity:aud001",
+      "controller": "did:chainidentity:bel-root-authority",
+      "verificationMethod": [
+        {
+          "id": "did:chainidentity:aud001#key-1",
+          "type": "Ed25519VerificationKey2020",
+          "controller": "did:chainidentity:aud001",
+          "publicKeyMultibase": "zf824c3c99fd525f12fc40b054db95d84e001134f2bb3"
+        }
+      ],
+      "authentication": [
+        "did:chainidentity:aud001#key-1"
+      ],
+      "service": [
+        {
+          "id": "did:chainidentity:aud001#chainidentity-agent",
+          "type": "ChainIdentityDecentralizedAgent",
+          "serviceEndpoint": "https://chainidentity.bel.in/did-resolver/v1"
+        }
+      ],
+      "created": "2026-09-20T08:45:00Z",
+      "updated": "2026-09-20T08:45:00Z"
+    }
+  },
+  "assets": [
+    {
+      "id": "ast-0017-uuid",
+      "assetId": "AST-0017",
+      "tokenId": "NFT-AST-0017",
+      "name": "Project A17",
+      "description": "Tactical Defense Communication & Signal Processing Module (Phase III)",
+      "assetType": "PROJECT",
+      "classification": "CONFIDENTIAL",
+      "owner": "Bharat Electronics Limited (BEL)",
+      "ownerDid": "did:chainidentity:admin001",
+      "isTokenized": true,
+      "mintTransactionId": "0x7f83b1657ff1fc53b92dc18148a1d65dfc2d4b1fa3d677284addd200126d9069",
+      "mintTimestamp": "2026-09-20T09:00:00Z",
+      "offchainHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "offchainId": "offchain-ast-0017",
+      "status": "ALLOCATED",
+      "createdAt": "2026-09-20T08:50:00Z",
+      "updatedAt": "2026-09-20T09:15:00Z"
+    },
+    {
+      "id": "ast-0024-uuid",
+      "assetId": "AST-0024",
+      "tokenId": "NFT-AST-0024",
+      "name": "Radar Firmware v4.2",
+      "description": "L-Band 3D Surveillance Radar Signal Processing Firmware and LUT Tables",
+      "assetType": "SOFTWARE_LICENSE",
+      "classification": "RESTRICTED",
+      "owner": "Bharat Electronics Limited (BEL)",
+      "ownerDid": "did:chainidentity:admin001",
+      "isTokenized": true,
+      "mintTransactionId": "0x9923ca1029ba8810291e0a29910d8a11bc234a91901a833441c9910283bade81",
+      "mintTimestamp": "2026-09-20T09:20:00Z",
+      "offchainHash": "c4ca4238a0b923820dcc509a6f75849b29381029381029381029381029381029",
+      "offchainId": "offchain-ast-0024",
+      "status": "TOKENIZED",
+      "createdAt": "2026-09-20T09:10:00Z",
+      "updatedAt": "2026-09-20T09:20:00Z"
+    },
+    {
+      "id": "ast-0089-uuid",
+      "assetId": "AST-0089",
+      "tokenId": "NFT-AST-0089",
+      "name": "BEL Defense Specs 2026",
+      "description": "Cryptographic Architecture Specifications for Next-Gen Avionics Systems",
+      "assetType": "DOCUMENT",
+      "classification": "TOP_SECRET",
+      "owner": "Bharat Electronics Limited (BEL)",
+      "ownerDid": "did:chainidentity:admin001",
+      "isTokenized": true,
+      "mintTransactionId": "0xaa81239bb1029384759281726354182930491827364519283746519283746192",
+      "mintTimestamp": "2026-09-20T09:30:00Z",
+      "offchainHash": "8f434346648f6b96df89dda901c5176b10a6d83961dd3c1ac88b59b2dc327aa4",
+      "offchainId": "offchain-ast-0089",
+      "status": "TOKENIZED",
+      "createdAt": "2026-09-20T09:25:00Z",
+      "updatedAt": "2026-09-20T09:30:00Z"
+    },
+    {
+      "id": "ast-0105-uuid",
+      "assetId": "AST-0105",
+      "tokenId": "NFT-AST-0105",
+      "name": "Frequency Calibration Unit 9B",
+      "description": "High-Precision RF Signal Generator & Vector Network Analyzer Hardware Rig",
+      "assetType": "EQUIPMENT",
+      "classification": "CONFIDENTIAL",
+      "owner": "Bharat Electronics Limited (BEL)",
+      "ownerDid": "did:chainidentity:admin001",
+      "isTokenized": true,
+      "mintTransactionId": "0xbb91827364519283746519283746519283746519283746519283746519283746",
+      "mintTimestamp": "2026-09-20T09:40:00Z",
+      "offchainHash": "9e107d9d372bb6826bd81d3542a419d6dae480df3e7a3d90f8e3a2feb0a63aa7",
+      "offchainId": "offchain-ast-0105",
+      "status": "TOKENIZED",
+      "createdAt": "2026-09-20T09:35:00Z",
+      "updatedAt": "2026-09-20T09:40:00Z"
+    }
+  ],
+  "allocations": [
+    {
+      "id": "alc-001",
+      "assetId": "AST-0017",
+      "assetName": "Project A17",
+      "userId": "usr-rahul-01",
+      "userDid": "did:chainidentity:rahul123",
+      "userName": "Rahul Kumar",
+      "role": "EMPLOYEE",
+      "permissions": [
+        "VIEW",
+        "EDIT"
+      ],
+      "allocatedBy": "System Administrator",
+      "allocatedByDid": "did:chainidentity:admin001",
+      "allocatedAt": "2026-09-20T09:15:00Z",
+      "status": "ACTIVE"
+    }
+  ],
+  "accessRequests": [],
+  "ledger": [
+    {
+      "index": 0,
+      "timestamp": "2026-09-20T07:59:00Z",
+      "eventId": "EVT-00000-949280",
+      "eventType": "GENESIS",
+      "actorDid": "did:chainidentity:bel-root-authority",
+      "transactionId": "0x0000000000000000000000000000000000000000000000000000000000000001",
+      "payload": {
+        "message": "ChainIdentity Permissioned Ledger Initialized. Root: Bharat Electronics Limited (BEL)",
+        "consensus": "Raft / PBFT Fabric Compatible Demo Engine",
+        "version": "2026.1.0-SIH26125"
+      },
+      "previousHash": "0000000000000000000000000000000000000000000000000000000000000000",
+      "currentHash": "c2e66ace191ee9f21ba940d79315708b4421eb79dc054675cb06431b78e92e60",
+      "signature": "ED25519_SIG_9de7b1dab1895b88f0f1b97a2c70f21b"
+    },
+    {
+      "index": 1,
+      "timestamp": "2026-09-20T08:00:00Z",
+      "eventId": "EVT-00001-994643",
+      "eventType": "DID_CREATED",
+      "actorDid": "did:chainidentity:admin001",
+      "transactionId": "0x0218a8406747daad4d0c59da25c93fa3d0ea4a875d48bb1083c4980f066dd151",
+      "payload": {
+        "user": "System Administrator",
+        "did": "did:chainidentity:admin001",
+        "role": "ADMINISTRATOR"
+      },
+      "previousHash": "c2e66ace191ee9f21ba940d79315708b4421eb79dc054675cb06431b78e92e60",
+      "currentHash": "584a65c4da924c4dc378b5e0e4c8e1dd5fc2b2479203dd4e072e3debf495d680",
+      "signature": "ED25519_SIG_9d8108ec9d822afae5a11c5390245c48"
+    },
+    {
+      "index": 2,
+      "timestamp": "2026-09-20T08:30:00Z",
+      "eventId": "EVT-00002-76bace",
+      "eventType": "DID_CREATED",
+      "actorDid": "did:chainidentity:admin001",
+      "transactionId": "0xc46b0fec4dfeff5686865d3c82728ea76896f649cf782e865e9cebcf97f53e6e",
+      "payload": {
+        "user": "Rahul Kumar",
+        "did": "did:chainidentity:rahul123",
+        "email": "rahul@chainidentity.demo"
+      },
+      "previousHash": "584a65c4da924c4dc378b5e0e4c8e1dd5fc2b2479203dd4e072e3debf495d680",
+      "currentHash": "8d4d1dfa4a9c4b3552bf3cf593ded88f249e0de14068debce7a5cabef65bc366",
+      "signature": "ED25519_SIG_4e2c0ef7e2ec3a912dc21ade0fe129a7"
+    },
+    {
+      "index": 3,
+      "timestamp": "2026-09-20T08:32:00Z",
+      "eventId": "EVT-00003-c8bb5c",
+      "eventType": "ROLE_ASSIGNED",
+      "actorDid": "did:chainidentity:admin001",
+      "transactionId": "0x04914e23b09e5fea21d8d6265c6c58c2fcdaf8640efd371d33ad915a475e898b",
+      "payload": {
+        "targetDid": "did:chainidentity:rahul123",
+        "role": "EMPLOYEE",
+        "organization": "BEL Defense Radar"
+      },
+      "previousHash": "8d4d1dfa4a9c4b3552bf3cf593ded88f249e0de14068debce7a5cabef65bc366",
+      "currentHash": "f4b1d28793d655dbc0e45af95dfea82c82ffb545901085a6aca23172fc792143",
+      "signature": "ED25519_SIG_c170f8813fd2223c74f0195b3750321d"
+    },
+    {
+      "index": 4,
+      "timestamp": "2026-09-20T08:50:00Z",
+      "eventId": "EVT-00004-12d9ab",
+      "eventType": "ASSET_REGISTERED",
+      "actorDid": "did:chainidentity:admin001",
+      "assetId": "AST-0017",
+      "transactionId": "0xf51e2f9458b4d5f14d7ca3ae4f25f6f6c33b428562317935b813be048df61bc5",
+      "payload": {
+        "name": "Project A17",
+        "assetType": "PROJECT",
+        "classification": "CONFIDENTIAL"
+      },
+      "previousHash": "f4b1d28793d655dbc0e45af95dfea82c82ffb545901085a6aca23172fc792143",
+      "currentHash": "abd22a73b9ae374d5672570cfff51313ec9b960473f6cbbb30cf5acd7d369efb",
+      "signature": "ED25519_SIG_2f9db277e9c3c2fd4e64a65e909eac7d"
+    },
+    {
+      "index": 5,
+      "timestamp": "2026-09-20T09:00:00Z",
+      "eventId": "EVT-00005-ff1399",
+      "eventType": "ASSET_MINTED",
+      "actorDid": "did:chainidentity:admin001",
+      "assetId": "AST-0017",
+      "transactionId": "0x7f83b1657ff1fc53b92dc18148a1d65dfc2d4b1fa3d677284addd200126d9069",
+      "payload": {
+        "tokenId": "NFT-AST-0017",
+        "sha256PayloadReference": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "standard": "ChainIdentity-OrganizationalAssetToken-v1"
+      },
+      "previousHash": "abd22a73b9ae374d5672570cfff51313ec9b960473f6cbbb30cf5acd7d369efb",
+      "currentHash": "91ee6f0579da3f95369feb981435c9f264b79fbe645ec98825648f8b68ccd23c",
+      "signature": "ED25519_SIG_2b23f088e0fe91e4895fb46149961c9e"
+    },
+    {
+      "index": 6,
+      "timestamp": "2026-09-20T09:15:00Z",
+      "eventId": "EVT-00006-69f16a",
+      "eventType": "ASSET_ALLOCATED",
+      "actorDid": "did:chainidentity:admin001",
+      "assetId": "AST-0017",
+      "transactionId": "0xd02f1b0b3b3d1f7519764390c29bbe1287ae1e655cce458bd20246e0316d4e4e",
+      "payload": {
+        "assigneeDid": "did:chainidentity:rahul123",
+        "assigneeName": "Rahul Kumar",
+        "permissions": [
+          "VIEW",
+          "EDIT"
+        ],
+        "status": "ACTIVE"
+      },
+      "previousHash": "91ee6f0579da3f95369feb981435c9f264b79fbe645ec98825648f8b68ccd23c",
+      "currentHash": "005c6ffa625a42440afd1ff679c84db21fbe392fb6f2da3eb071077413c0ff05",
+      "signature": "ED25519_SIG_4c461ea5887abdb736695639772971ba"
+    },
+    {
+      "index": 7,
+      "timestamp": "2026-09-24T17:25:01.554Z",
+      "eventId": "EVT-00007-fa1ff1",
+      "eventType": "ACCESS_ALLOWED",
+      "actorDid": "did:chainidentity:rahul123",
+      "assetId": "AST-0017",
+      "transactionId": "0x7e6fd5ae5e421d32790a84f87c29ea7a723e08894ffebd833293e96306cb7a4f",
+      "payload": {
+        "action": "EDIT",
+        "enforcementLayer": "SmartContractService::check_access",
+        "policyResult": "ALLOW",
+        "reason": "Permission verified and active under Smart Contract Policy",
+        "emergencyActive": false
+      },
+      "previousHash": "005c6ffa625a42440afd1ff679c84db21fbe392fb6f2da3eb071077413c0ff05",
+      "currentHash": "eb932343b35d553ba9907ea69477320de455ce239fdf81accf0c3691fe1c46d6",
+      "signature": "ED25519_SIG_fc2ba047336ad2e632b9b9f0732641e6"
+    },
+    {
+      "index": 8,
+      "timestamp": "2026-09-24T18:17:46.049Z",
+      "eventId": "EVT-00008-63dccf",
+      "eventType": "ACCESS_ALLOWED",
+      "actorDid": "did:chainidentity:rahul123",
+      "assetId": "AST-0017",
+      "transactionId": "0x04019ab4000d1d4692550edb386e8097d963f0f3c3ad87e13064acd8996f1d5a",
+      "payload": {
+        "action": "EDIT",
+        "enforcementLayer": "SmartContractService::check_access",
+        "policyResult": "ALLOW",
+        "reason": "Permission verified and active under Smart Contract Policy",
+        "emergencyActive": false
+      },
+      "previousHash": "eb932343b35d553ba9907ea69477320de455ce239fdf81accf0c3691fe1c46d6",
+      "currentHash": "03d8319678fd23c22f50ed77c473367b586f705f8e84cc65ccda35447bf446cb",
+      "signature": "ED25519_SIG_b05016d2dffc8e048ec6ee213f89b27f"
+    },
+    {
+      "index": 9,
+      "timestamp": "2026-09-24T18:18:27.297Z",
+      "eventId": "EVT-00009-baf705",
+      "eventType": "ACCESS_ALLOWED",
+      "actorDid": "did:chainidentity:rahul123",
+      "assetId": "AST-0017",
+      "transactionId": "0xe49e9d7660249dc145139183440b9001a3fc6af9cc1c63cc9264899fdb8bd9e3",
+      "payload": {
+        "action": "EDIT",
+        "enforcementLayer": "SmartContractService::check_access",
+        "policyResult": "ALLOW",
+        "reason": "Permission verified and active under Smart Contract Policy",
+        "emergencyActive": false
+      },
+      "previousHash": "03d8319678fd23c22f50ed77c473367b586f705f8e84cc65ccda35447bf446cb",
+      "currentHash": "aef646a36627bb445af5cadde658b80cfe24ddf637933e1ae4ac5ac28a91a329",
+      "signature": "ED25519_SIG_da3808ce14c53618434a05290938f527"
+    }
+  ],
+  "securityAlerts": [
+    {
+      "id": "ALT-INIT-001",
+      "anomalyScore": 24,
+      "riskLevel": "LOW",
+      "reason": "Routine baseline scan: access pattern verified across normal business hours.",
+      "userDid": "did:chainidentity:rahul123",
+      "userName": "Rahul Kumar",
+      "assetId": "AST-0017",
+      "assetName": "Project A17",
+      "details": {
+        "frequency": "1 request / hr",
+        "timeWindow": "09:00 - 17:00 IST",
+        "location": "BEL Jalahalli Campus IP Range"
+      },
+      "status": "RESOLVED",
+      "createdAt": "2026-09-20T10:00:00Z",
+      "resolvedAt": "2026-09-20T10:05:00Z",
+      "investigatedBy": "Vikram Joshi (SecOps)",
+      "investigationNotes": "Verified as normal baseline activity during shift."
+    }
+  ],
+  "emergencyAccesses": [],
+  "offchainFiles": {
+    "offchain-ast-0017": {
+      "id": "offchain-ast-0017",
+      "assetId": "AST-0017",
+      "filename": "Project-A17-Tactical-DSP-v3.pkg",
+      "mimeType": "application/octet-stream",
+      "sizeBytes": 271,
+      "sha256Hash": "af188346f5031ce17e7fd82ce7f7a6d35abf18bcada91ba92c4cd025ea4ab664",
+      "encryptedFilePath": "/app/applet/data/offchain_storage/ast-0017-payload.enc",
+      "ivHex": "bdd9fe67ad1fc36abfeb9a03",
+      "authTagHex": "4d14fbc1c8823c7640e1fe7b79d5781a",
+      "uploadedByDid": "did:chainidentity:admin001",
+      "uploadedAt": "2026-09-20T09:00:00Z",
+      "verifiedAt": "2026-09-20T09:00:00Z"
+    }
+  },
+  "notifications": [
+    {
+      "id": "notif-1",
+      "targetRole": "EMPLOYEE",
+      "targetUserDid": "did:chainidentity:rahul123",
+      "title": "Asset Allocated: Project A17",
+      "message": "You have been granted active EDIT permissions on Project A17 by Administrator.",
+      "type": "SUCCESS",
+      "read": false,
+      "createdAt": "2026-09-20T09:15:00Z"
+    },
+    {
+      "id": "notif-2",
+      "targetRole": "SECURITY_MANAGER",
+      "title": "System Initialized",
+      "message": "ChainIdentity ledger online with tamper-evident SHA-256 hash chain and AI anomaly surveillance.",
+      "type": "INFO",
+      "read": false,
+      "createdAt": "2026-09-20T08:00:00Z"
+    }
+  ],
+  "blockchainProvider": "fabric",
+  "ledgerTampered": false
+}

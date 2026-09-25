@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: chainidentity_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: chainadmin
+      POSTGRES_PASSWORD: chainpass_sih2026
+      POSTGRES_DB: chainidentity_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U chainadmin -d chainidentity_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: chainidentity_backend
+    restart: always
+    environment:
+      DATABASE_URL: postgresql://chainadmin:chainpass_sih2026@postgres:5432/chainidentity_db
+      SECRET_KEY: chainidentity-sih2026-bel-secure-key-998877
+      BLOCKCHAIN_PROVIDER: local
+      OFFCHAIN_STORAGE_PATH: /app/data/offchain_storage
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - backend_data:/app/data
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    container_name: chainidentity_frontend
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      VITE_API_BASE_URL: http://localhost:8000/api
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
+  backend_data:
